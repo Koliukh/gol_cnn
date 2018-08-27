@@ -22,7 +22,7 @@ def train_and_evaluate_model(model, x_train, y_train, x_val, y_val):
               metrics=['accuracy'])
     checkpoint = ModelCheckpoint("gol_w_"+str(width)+"x"+str(height)+"x"+str(n_samples)+".h5", monitor="accuracy", verbose=1, save_best_only=True,
                                  save_weights_only=True, mode="max", period=1)
-    stop = EarlyStopping(monitor="val_acc", patience=5, mode="auto")
+    stop = EarlyStopping(monitor="val_acc", patience=15, mode="auto")
     
     model.fit(x_train, y_train,
               batch_size=batch_size,
